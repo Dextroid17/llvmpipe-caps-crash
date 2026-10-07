@@ -7,7 +7,7 @@
 
 A compute shader that runs correctly when llvmpipe targets `sse4_2`, `avx2` or `avx512` SIGSEGVs inside llvmpipe's JIT-compiled shader when llvmpipe targets `sse2` or `avx`. The fault is a load from address 0 — `vpbroadcastd (%rcx),%ymm1` with `%rcx = 0`.
 
-The same SPIR-V module is used in every case (byte-identical, `sha256 477c7de6ac3bb76d`, 15900 bytes), so the difference is entirely in the code llvmpipe generates. `spirv-val` reports the module valid.
+The same SPIR-V module is used in every case (byte-identical, `sha256 3bceca7a51b64ced04b992c04b598c6f33a40f1a96a7ca50fb22c0ece63834b6`, 15900 bytes), so the difference is entirely in the code llvmpipe generates. `spirv-val` reports the module valid.
 
 ## Environment
 
@@ -75,5 +75,5 @@ vpbroadcastd (%rcx),%ymm1        <-- fault, rcx = 0
 ## Attachments
 
 - `main.cpp`, `build.sh` — reproducer
-- `bda_run2.spv` — the shader (`sha256 477c7de6ac3bb76d`, 15900 bytes)
+- `bda_run2.spv` — the shader (`sha256 3bceca7a51b64ced04b992c04b598c6f33a40f1a96a7ca50fb22c0ece63834b6`, 15900 bytes)
 - `bda_run2.spvasm` — disassembly

@@ -6,7 +6,7 @@ Minimal reproducer for a segfault in llvmpipe's JIT-compiled shader. Filed upstr
 A compute shader that runs correctly when llvmpipe targets `sse4_2`, `avx2` or `avx512`
 SIGSEGVs when llvmpipe targets `sse2` or `avx`. The fault is a load from address 0 —
 `vpbroadcastd (%rcx),%ymm1` with `%rcx = 0`. The SPIR-V module is byte-identical in every
-case (`sha256 477c7de6ac3bb76d`, 15900 bytes), so the difference is entirely in the code
+case (`sha256 3bceca7a51b64ced04b992c04b598c6f33a40f1a96a7ca50fb22c0ece63834b6`, 15900 bytes), so the difference is entirely in the code
 llvmpipe generates.
 
 ## Environment where it was found
@@ -20,7 +20,7 @@ llvmpipe generates.
 
 - `main.cpp` — self-contained reproducer (~250 lines; needs only Vulkan headers and `libvulkan`)
 - `build.sh` — build helper
-- `bda_run2.spv` — the shader (`sha256 477c7de6ac3bb76d`, 15900 bytes)
+- `bda_run2.spv` — the shader (`sha256 3bceca7a51b64ced04b992c04b598c6f33a40f1a96a7ca50fb22c0ece63834b6`, 15900 bytes)
 - `bda_run2.spvasm` — its disassembly
 
 ## Build and run
